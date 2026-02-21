@@ -1,0 +1,36 @@
+- name: deploy application
+  hosts: appservers
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: copy application files
+      ansible.builtin.script: ./prod.sh
+
+- name: install nginx
+  hosts: nginx
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: install nginx using script
+      ansible.builtin.script: ./nginx.sh
+
+- name: deploy nginx configuration
+  hosts: nginx
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: copy nginx configuration file
+      ansible.builtin.copy:
+        src: ./loadbalancer.conf
+        dest: /etc/nginx/conf.d/loadbalancer.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+- name: restart nginx
+  hosts: nginx
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: restart using script
+      ansible.builtin.script: ./restart_nginx.sh

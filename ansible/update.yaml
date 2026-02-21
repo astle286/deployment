@@ -1,0 +1,7 @@
+- name: update application
+  hosts: appservers
+  remote_user: ubuntu
+  become: yes
+  tasks:
+    - name: Update application using script
+      ansible.builtin.script: ./update.sh

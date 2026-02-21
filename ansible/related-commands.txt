@@ -1,0 +1,6 @@
+ssh-keygen -i -m PKCS8 -f viskey.pem > viskey_openssh.key
+
+on nginx ec2 
+sudo rm /etc/nginx/sites-enabled/default
+sudo systemctl reload nginx
+

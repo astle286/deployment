@@ -1,0 +1,14 @@
+- name: create new user
+  hosts: appservers
+  remote_user: ubuntu
+  become: yes
+  
+  tasks:
+    - name: create user appadmin with home directory and ssh key
+      ansible.builtin.user:
+        name: appadmin
+        create_home: yes
+        generate_ssh_key: yes
+        ssh_key_bits: 2048
+        ssh_key_file: .ssh/appadmin_id_rsa      
+    
