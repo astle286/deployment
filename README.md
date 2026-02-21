@@ -1,6 +1,6 @@
 ## 🎥 Demo Video
 
-[![Watch the video](assets/thumbnail.png)](https://youtu.be/IrO7A7NN6wM)
+[![Watch the video](assests/thumbnail.png)](https://youtu.be/IrO7A7NN6wM)
 
 
 # Deployment Infrastructure 🚀
